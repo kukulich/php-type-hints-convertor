@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<ruleset name="Type hints convertor">
+	<rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/Sniffs/TypeHints/TypeHintDeclarationSniff.php"/>
+
+	<!-- Enable for "NULL", remove for "null" -->
+	<rule ref="Generic.PHP.UpperCaseConstant"/>
+
+	<rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
+		<!-- Remove this if you want to convert parameter type hints -->
+		<exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint"/>
+
+		<!-- Remove this if you want to convert return type hints -->
+		<exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingReturnTypeHint"/>
+
+		<!-- Remove this if you want to remove useless doccomments -->
+		<exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessDocComment"/>
+
+		<properties>
+			<!-- List of traversable type hints -->
+			<property name="traversableTypeHints" type="array" value="
+				Traversable,
+				Nette\ArrayHash,
+				Nette\ArrayList
+			"/>
+
+			<!-- PHP 7.1: Enable type hints with ? -->
+			<property name="enableNullableTypeHints" value="false"/>
+			<!-- PHP 7.1: Enable void -->
+			<property name="enableVoidTypeHint" value="false"/>
+
+			<!-- For "UselessDocComment": doccomment is not detected as useless if it contains one of this annotions -->
+			<property name="usefulAnnotations" type="array" value="
+				@deprecated,
+				@internal,
+				@see
+			"/>
+		</properties>
+
+		<!-- Not useful here, just ignore -->
+		<exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingPropertyTypeHint"/>
+		<exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableParameterTypeHintSpecification"/>
+		<exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversablePropertyTypeHintSpecification"/>
+		<exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingTraversableReturnTypeHintSpecification"/>
+	</rule>
+</ruleset>

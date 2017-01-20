@@ -1,0 +1,9 @@
+{
+	"name": "kukulich/typehints-fixer",
+	"homepage": "http://github.com/kukulich/typehints-fixer",
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"require": {
+		"slevomat/coding-standard": "dev-2.0-dev#1e3adf8"
+	}
+}
